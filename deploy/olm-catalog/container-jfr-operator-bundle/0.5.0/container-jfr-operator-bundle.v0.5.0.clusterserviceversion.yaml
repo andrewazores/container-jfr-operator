@@ -65,14 +65,58 @@ spec:
       kind: ContainerJFR
       name: containerjfrs.rhjmc.redhat.com
       version: v1alpha1
+      specDescriptors:
+        - displayName: Minimal
+          path: minimal
+          description: Deploy a ContainerJFR instance without web-client front-end, jfr-datasource, or Grafana dashboard components
+      statusDescriptors: []
     - description: FlightRecorder is the Schema for the flightrecorders API
       kind: FlightRecorder
       name: flightrecorders.rhjmc.redhat.com
       version: v1alpha2
+      specDescriptors:
+        - displayName: Recording Selector
+          path: recordingSelector
+          description: Selector for associating Recording objects to FlightRecorder objects (many-to-one)
+        - displayName: JMX Credentials
+          path: jmxCredentials
+          description: Basic auth credentials to use when establishing JMX connections to the JVM target this FlightRecorder represents
+      statusDescriptors:
+        - displayName: Target
+          path: properties.target
+          description: Reference to the pod/service that this object controls
+          x-descriptors:
+            - "urn:alm:descriptor:com.tectonic.ui:label"
+        - displayName: Port
+          path: properties.port
+          description: The JMX port number used to connect to the target JVM
+          x-descriptors:
+            - "urn:alm:descriptor:com.tectonic.ui:label"
+        - displayName: Events
+          path: properties.events
+          description: Listing of events available in the target JVM
+          x-descriptors:
+            - "urn:alm:descriptor:com.tectonic.ui:label"
     - description: Recording is the Schema for the recordings API
       kind: Recording
       name: recordings.rhjmc.redhat.com
       version: v1alpha2
+      specDescriptors:
+        - displayName: Name
+          description: The name of the recording within the target JVM FlightRecorder
+          path: name
+        - displayName: Archive
+          description: Configuration for whether this recording should be copied to archival storage (Persistent Volume)
+          path: archive
+        - displayName: Duration
+          description: Configuration for how long this recording should run before being automatically stopped, if ever
+          path: duration
+        - displayName: Event Options
+          description: Configuration for which events or event template is applied to this recording
+          path: eventOptions
+        - displayName: Flight Recorder
+          description: Reference to the FlightRecorder object to which this Recording belongs
+          path: flightRecorder
   description: |
     ContainerJFR provides a cloud-based solution for interacting with the JDK Flight Recorder already present in OpenJDK 11+ JVMs. With ContainerJFR, users can remotely start, stop, retrieve, and even analyze JFR event data, providing the capbility to easily take advantage of Flight Recorder''s extremely low runtime cost and overhead and the flexibility to monitor applications and analyze recording data without transferring data outside of the cluster the application runs within.
   displayName: ContainerJFR
