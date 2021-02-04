@@ -1,0 +1,185 @@
+INFO[0000] Using config file: /home/andrew/workspace/container-jfr-operator/.osdk-scorecard.yaml 
+basic:
+	Spec Block Exists                   : pass
+	CR: containerjfr
+	Labels: 
+		"suite":"basic"
+		"test":"checkspectest"
+		"necessity":"required"
+
+	Status Block Exists                 : pass
+	CR: containerjfr
+	Labels: 
+		"necessity":"required"
+		"suite":"basic"
+		"test":"checkstatustest"
+	Suggestions: 
+		Add a 'status' field to your Custom Resource
+
+	Writing into CRs has an effect      : pass
+	CR: containerjfr
+	Labels: 
+		"necessity":"required"
+		"suite":"basic"
+		"test":"writingintocrshaseffecttest"
+
+	Spec Block Exists                   : pass
+	CR: example-flightrecorder
+	Labels: 
+		"suite":"basic"
+		"test":"checkspectest"
+		"necessity":"required"
+
+	Status Block Exists                 : pass
+	CR: example-flightrecorder
+	Labels: 
+		"necessity":"required"
+		"suite":"basic"
+		"test":"checkstatustest"
+	Suggestions: 
+		Add a 'status' field to your Custom Resource
+
+	Writing into CRs has an effect      : pass
+	CR: example-flightrecorder
+	Labels: 
+		"necessity":"required"
+		"suite":"basic"
+		"test":"writingintocrshaseffecttest"
+
+	Spec Block Exists                   : pass
+	CR: example-recording
+	Labels: 
+		"necessity":"required"
+		"suite":"basic"
+		"test":"checkspectest"
+
+	Status Block Exists                 : pass
+	CR: example-recording
+	Labels: 
+		"test":"checkstatustest"
+		"necessity":"required"
+		"suite":"basic"
+	Suggestions: 
+		Add a 'status' field to your Custom Resource
+
+	Writing into CRs has an effect      : pass
+	CR: example-recording
+	Labels: 
+		"necessity":"required"
+		"suite":"basic"
+		"test":"writingintocrshaseffecttest"
+
+olm:
+	Bundle Validation Test              : pass
+	CR: containerjfr
+	Labels: 
+		"necessity":"required"
+		"suite":"olm"
+		"test":"bundlevalidationtest"
+
+	Provided APIs have validation       : pass
+	CR: containerjfr
+	Labels: 
+		"test":"crdshavevalidationtest"
+		"necessity":"required"
+		"suite":"olm"
+
+	Owned CRDs have resources listed    : fail
+	CR: containerjfr
+	Labels: 
+		"necessity":"required"
+		"suite":"olm"
+		"test":"crdshaveresourcestest"
+	Suggestions: 
+		If it would be helpful to an end-user to understand or troubleshoot your CR, consider adding resources [flightrecorders/v1alpha2 recordings/v1alpha2 deployments/v1 servicemonitors/v1 persistentvolumeclaims/v1 secrets/v1 routes/v1 pods/v1 containerjfrs/v1alpha1 replicasets/v1 services/v1 configmaps/v1] to the resources section for owned CRD ContainerJFR
+
+	Spec fields with descriptors        : pass
+	CR: containerjfr
+	Labels: 
+		"necessity":"required"
+		"suite":"olm"
+		"test":"specdescriptorstest"
+
+	Status fields with descriptors      : fail
+	CR: containerjfr
+	Labels: 
+		"necessity":"required"
+		"suite":"olm"
+		"test":"statusdescriptorstest"
+
+	Bundle Validation Test              : pass
+	CR: example-flightrecorder
+	Labels: 
+		"necessity":"required"
+		"suite":"olm"
+		"test":"bundlevalidationtest"
+
+	Provided APIs have validation       : pass
+	CR: example-flightrecorder
+	Labels: 
+		"necessity":"required"
+		"suite":"olm"
+		"test":"crdshavevalidationtest"
+
+	Owned CRDs have resources listed    : fail
+	CR: example-flightrecorder
+	Labels: 
+		"necessity":"required"
+		"suite":"olm"
+		"test":"crdshaveresourcestest"
+	Suggestions: 
+		If it would be helpful to an end-user to understand or troubleshoot your CR, consider adding resources [configmaps/v1 flightrecorders/v1alpha2 recordings/v1alpha2 replicasets/v1 deployments/v1 services/v1 servicemonitors/v1 pods/v1 containerjfrs/v1alpha1] to the resources section for owned CRD FlightRecorder
+
+	Spec fields with descriptors        : pass
+	CR: example-flightrecorder
+	Labels: 
+		"necessity":"required"
+		"suite":"olm"
+		"test":"specdescriptorstest"
+
+	Status fields with descriptors      : fail
+	CR: example-flightrecorder
+	Labels: 
+		"necessity":"required"
+		"suite":"olm"
+		"test":"statusdescriptorstest"
+
+	Bundle Validation Test              : pass
+	CR: example-recording
+	Labels: 
+		"necessity":"required"
+		"suite":"olm"
+		"test":"bundlevalidationtest"
+
+	Provided APIs have validation       : pass
+	CR: example-recording
+	Labels: 
+		"necessity":"required"
+		"suite":"olm"
+		"test":"crdshavevalidationtest"
+
+	Owned CRDs have resources listed    : fail
+	CR: example-recording
+	Labels: 
+		"necessity":"required"
+		"suite":"olm"
+		"test":"crdshaveresourcestest"
+	Suggestions: 
+		If it would be helpful to an end-user to understand or troubleshoot your CR, consider adding resources [configmaps/v1 recordings/v1alpha2 replicasets/v1 services/v1 servicemonitors/v1 pods/v1 containerjfrs/v1alpha1 flightrecorders/v1alpha2 deployments/v1] to the resources section for owned CRD Recording
+
+	Spec fields with descriptors        : pass
+	CR: example-recording
+	Labels: 
+		"test":"specdescriptorstest"
+		"necessity":"required"
+		"suite":"olm"
+
+	Status fields with descriptors      : fail
+	CR: example-recording
+	Labels: 
+		"suite":"olm"
+		"test":"statusdescriptorstest"
+		"necessity":"required"
+
+
+make: *** [Makefile:113: scorecard] Error 1
